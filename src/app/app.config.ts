@@ -10,15 +10,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'xxx',
-  authDomain: 'xx',
-  projectId: 'xx',
-  storageBucket: 'xx',
-  messagingSenderId: 'xx',
-  appId: 'xx',
+  apiKey: '',
+  authDomain: '',
+  projectId: '',
+  storageBucket: '',
+  messagingSenderId: '',
+  appId: '',
 };
 
 export const appConfig: ApplicationConfig = {
@@ -28,5 +29,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
+    MatSnackBarModule,
   ],
 };

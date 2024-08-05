@@ -41,10 +41,15 @@ export class LoginComponent {
       return;
     }
 
-    this.notificationService.showLoading();
-    await this.authService.login(email, password);
-    this.notificationService.success('Logged in successfully!');
-    this.notificationService.hideLoading();
-    return this.router.navigate(['/home']);
+    try {
+      this.notificationService.showLoading();
+      await this.authService.login(email, password);
+      this.notificationService.success('Logged in successfully!');
+      this.router.navigate(['/home']);
+    } catch (error: any) {
+      this.notificationService.firebaseError(error);
+    } finally {
+      this.notificationService.hideLoading();
+    }
   }
 }

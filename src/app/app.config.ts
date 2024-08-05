@@ -13,12 +13,12 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: 'AIzaSyCFACIrh966gbqEh6R_66a3CQyCfe2LVMc',
-  authDomain: 'angular-firebase-auth-38698.firebaseapp.com',
-  projectId: 'angular-firebase-auth-38698',
-  storageBucket: 'angular-firebase-auth-38698.appspot.com',
-  messagingSenderId: '604392300527',
-  appId: '1:604392300527:web:728a632a413c59dd3f201a',
+  apiKey: 'xxx',
+  authDomain: 'xx',
+  projectId: 'xx',
+  storageBucket: 'xx',
+  messagingSenderId: 'xx',
+  appId: 'xx',
 };
 
 export const appConfig: ApplicationConfig = {

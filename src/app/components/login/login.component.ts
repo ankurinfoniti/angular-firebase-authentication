@@ -1,8 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class LoginComponent {
   fb = inject(FormBuilder);
+  authService = inject(AuthService);
+  router = inject(Router);
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -27,11 +32,14 @@ export class LoginComponent {
   email = this.loginForm.get('email');
   password = this.loginForm.get('password');
 
-  login() {
-    if (!this.loginForm.valid) {
+  async login() {
+    const { email, password } = this.loginForm.value;
+
+    if (!this.loginForm.valid || !email || !password) {
       return;
     }
 
-    console.log('Valid form submitted', this.loginForm.value);
+    await this.authService.login(email, password);
+    return this.router.navigate(['/home']);
   }
 }

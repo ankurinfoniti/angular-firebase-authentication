@@ -1,10 +1,17 @@
-.mat-primary {
+.mat-toolbar.mat-primary {
   color: white;
   background-color: #7d00fa;
 }
 
 mat-toolbar {
   justify-content: space-between;
+}
+
+mat-progress-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .container {

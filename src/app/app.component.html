@@ -17,3 +17,9 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+
+@if (loading()) {
+  <mat-progress-spinner
+    mode="indeterminate"
+    diameter="50"></mat-progress-spinner>
+}

@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AuthService } from '../../services/auth.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +23,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   fb = inject(FormBuilder);
   authService = inject(AuthService);
+  notificationService = inject(NotificationService);
   router = inject(Router);
 
   loginForm = this.fb.group({
@@ -39,7 +41,9 @@ export class LoginComponent {
       return;
     }
 
+    this.notificationService.showLoading();
     await this.authService.login(email, password);
+    this.notificationService.hideLoading();
     return this.router.navigate(['/home']);
   }
 }

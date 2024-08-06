@@ -3,8 +3,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import {
   Auth,
   authState,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
   User,
   UserCredential,
 } from '@angular/fire/auth';
@@ -20,6 +22,14 @@ export class AuthService {
 
   login(email: string, password: string): Promise<UserCredential> {
     return signInWithEmailAndPassword(this.firebaseAuth, email, password);
+  }
+
+  signUp(email: string, password: string): Promise<UserCredential> {
+    return createUserWithEmailAndPassword(this.firebaseAuth, email, password);
+  }
+
+  setDisplayName(user: User, name: string): Promise<void> {
+    return updateProfile(user, { displayName: name });
   }
 
   logout(): Promise<void> {

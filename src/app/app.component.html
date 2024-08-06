@@ -2,7 +2,7 @@
   Angular Sign Up App
   @if (currentUser()) {
     <button mat-button [mat-menu-trigger-for]="userMenu">
-      {{ currentUser()?.email }} <mat-icon>expand_more</mat-icon>
+      {{ currentUser()?.displayName }} <mat-icon>expand_more</mat-icon>
     </button>
   }
 

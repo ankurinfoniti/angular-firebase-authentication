@@ -26,6 +26,9 @@
       @if (password?.hasError('required')) {
         <mat-error>Password is required</mat-error>
       }
+      @if (password?.hasError('minlength')) {
+        <mat-error>Password should be at least 6 characters</mat-error>
+      }
     </mat-form-field>
     <mat-form-field>
       <mat-label>Confirm Password</mat-label>
